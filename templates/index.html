@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- Base content for the homepage -->
+<div class="container">
+
+    <p>This is dummy text for now</p>
+
+</div>
+
+<br>
+
+<!-- Table of reviews on homepage -->
+<table class="reviews_table">
+    <thead>
+        <th>Title</th>
+        <th>Image</th>
+        <th>Score</th>
+        <th>Username</th>
+        <th>Date</th>
+    </thead>
+    <!-- Will be used to import reviews -->
+    <tbody>
+        {% for review in reviews %}
+        <tr>
+            <td>{{ review['title'] }}</td>
+            <td>{{ review['image'] }}</td>
+            <td>{{ review['rating'] }}</td>
+            <td>{{ review['reviewerName'] }}</td>
+            <td>{{ review['date'] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
