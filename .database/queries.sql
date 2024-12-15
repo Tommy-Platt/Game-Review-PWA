@@ -19,13 +19,13 @@
 -- 'scrypt:32768:8:1$19yCXh84aS6I31Z3$9cf8bf32640359830b8bac6a8f8ea46ca4c6f78dbc607769ea887c9415bd7c8754dad12cdc41c9570fa849b3a26a0d55aedaca2f770ac7ea74342f5728686109');
 
 -- INSERT INTO Reviews(title, reviewDate, reviewerName, rating, reviewText)
--- VALUES ('AstroBot is awesome', '2024-12-2', 'tommy', 5, 'This game will win GOTY, a perfect platformer!'),
--- ('Balatro is bad!', '2024-12-3', 'sam', 2, 'Awful game. Nothing more to say'),
--- ('Elden Ring is great!', '2024-12-4', 'ben', 4, 'I had a fun time racing my friend in this game!'),
--- ('AstroBot... meh', '2024-12-5', 'sam', 3, 'Mid game. Got bored 2h in.'),
--- ('Dark Souls: A Masterpiece', '2024-12-6', 'tommy', 5, 'Everything is perfect. 5/5!'),
--- ('DS2: A disappointment.', '2024-12-7', 'ben', 1, 'Such a step down from Dark Souls. Hopefully DS3 is better.'),
--- ('Celeste is the best!', '2024-12-8', 'hayden', 5, 'My favourite indie. Perfect in every way.'),
--- ('Terraria is fun as!', '2024-12-9', 'brodie', 4, 'Lighthearted. Fun. Challenging. 4/5 from me.'),
+-- VALUES ('AstroBot is awesome', '2024-12-02', 'tommy', 5, 'This game will win GOTY, a perfect platformer!'),
+-- ('Balatro is bad!', '2024-12-03', 'sam', 2, 'Awful game. Nothing more to say'),
+-- ('Elden Ring is great!', '2024-12-04', 'ben', 4, 'I had a fun time racing my friend in this game!'),
+-- ('AstroBot... meh', '2024-12-05', 'sam', 3, 'Mid game. Got bored 2h in.'),
+-- ('Dark Souls: A Masterpiece', '2024-12-06', 'tommy', 5, 'Everything is perfect. 5/5!'),
+-- ('DS2: A disappointment.', '2024-12-07', 'ben', 1, 'Such a step down from Dark Souls. Hopefully DS3 is better.'),
+-- ('Celeste is the best!', '2024-12-08', 'hayden', 5, 'My favourite indie. Perfect in every way.'),
+-- ('Terraria is fun as!', '2024-12-09', 'brodie', 4, 'Lighthearted. Fun. Challenging. 4/5 from me.'),
 -- ('Minecraft is PEAK', '2024-12-10', 'brodie', 5, 'How is this NOT perfect? Super cool game, infinite possibilities.'),
 -- ('Dead Cells Review', '2024-12-11', 'hayden', 4, 'Cool sword combat. Had a blast with this.');
