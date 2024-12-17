@@ -16,3 +16,20 @@ def getAllReviews():
     reviews = db.execute("SELECT * FROM Reviews ORDER BY reviewDate DESC").fetchall()
     db.close()
     return reviews
+
+def checkLogin(username, password):
+
+    db = getDB()
+
+    # Retrieve single user from the DB matching the username
+    user = db.execute("SELECT * FROM Users WHERE username=? COLLATE NOCASE", (username,)).fetchone()
+
+    # Checks if the user exists in the database
+    if user is not None:
+        # Checks if the password is correct
+        if check_password_hash(user['password'], password):
+            return user
+        
+    # Returns None if incorrect info is input
+    return None
+

@@ -4,12 +4,17 @@
 
 <!-- Base content for the homepage -->
 <div class="container">
-
-    <p>This is dummy text for now</p>
-
+    {% if session['username'] %}
+        <h1>Welcome back, {{ session['username'] }}</h1>
+        <p>Check out the most recent reviews for the latest and greatest games. <br><br>Want to post a review?</p>
+    {% else %}
+        <h1>Hello there!</h1>
+        <p>Check out the most recent reviews for the latest and greatest games. <br><br>Want to post a review? Login or Register today!</p>
+    {% endif %}
 </div>
 
 <br>
+<h2>Recent Reviews</h2>
 
 <!-- Table of reviews on homepage -->
 <table class="reviews_table">
