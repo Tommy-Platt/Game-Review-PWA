@@ -33,3 +33,16 @@ def checkLogin(username, password):
     # Returns None if incorrect info is input
     return None
 
+def registerUser(username, password):
+
+    # Checks if user enters username and password
+    if username is None or password is None:
+        return False
+    
+    # Adds the entered information to Users table in database
+    db = getDB()
+    hash = generate_password_hash(password)
+    db.execute("INSERT INTO Users(username, password) VALUES(?, ?)", (username, hash,))
+    db.commit()
+
+    return True

@@ -33,4 +33,19 @@ def Logout():
      session.clear()
      return redirect("/")
 
+@app.route("/register", methods=["GET", "POST"])
+def Register():
+
+    # Registers user if they submit the form
+    if request.method == "POST":
+        username = request.form['username']
+        password = request.form['password']
+
+        # Attempts to add the user to the database
+        if registerUser(username, password):
+            # Returns to login page if successful for them to login
+            return redirect("/login")
+    
+    return render_template("register.html")
+
 app.run(debug=True, port=5000) # Runs the Flask server
