@@ -7,6 +7,7 @@
     {% if session['username'] %}
         <h1>Welcome back, {{ session['username'] }}</h1>
         <p>Check out the most recent reviews for the latest and greatest games. <br><br>Want to post a review?</p>
+        <button><a class="bg" href="/postreview">Post Review <span class="inline-icon material-icons">edit</span></a></button>
     {% else %}
         <h1>Hello there!</h1>
         <p>Check out the most recent reviews for the latest and greatest games. <br><br>Want to post a review? Login or Register today!</p>

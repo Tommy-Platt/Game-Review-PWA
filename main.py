@@ -28,4 +28,9 @@ def Login():
 
     return render_template("login.html")
 
+@app.route("/logout")
+def Logout():
+     session.clear()
+     return redirect("/")
+
 app.run(debug=True, port=5000) # Runs the Flask server
