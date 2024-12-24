@@ -48,4 +48,24 @@ def Register():
     
     return render_template("register.html")
 
+@app.route("/postreview", methods=["GET", "POST"])
+def Post():
+
+    # Attempts to add review after they fill out the form
+    if request.method == "POST":
+        reviewTitle = request.form['title']
+        reviewDate = request.form['date']
+        reviewerName = session['username']
+        reviewText = request.form['description']
+        rating = request.form['rating']
+        reviewImage = request.files['image']
+
+        # Retrieves the BLOB of the uploaded image to be stored
+        reviewImage = reviewImage.read()
+
+        # Stores the user's data
+        postReview(reviewTitle, reviewDate, reviewerName, reviewText, rating, reviewImage)
+
+    return render_template("postreview.html")
+
 app.run(debug=True, port=5000) # Runs the Flask server

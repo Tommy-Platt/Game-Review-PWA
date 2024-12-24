@@ -42,7 +42,25 @@ def registerUser(username, password):
     # Adds the entered information to Users table in database
     db = getDB()
     hash = generate_password_hash(password)
-    db.execute("INSERT INTO Users(username, password) VALUES(?, ?)", (username, hash,))
-    db.commit()
+    # Try to insert the user into the database, if it fails the page refreshes
+    try:
+        db.execute("INSERT INTO Users(username, password) VALUES(?, ?)", (username, hash,))
+        db.commit()
+    except:
+        return False
 
+    return True
+
+def postReview(title, reviewerName, reviewDate, reviewText, rating, reviewImage):
+
+    # If any required field is missing info, refresh page
+    for i in (title, reviewerName, reviewDate, reviewText, rating):
+        if i is None:
+            return False
+
+    # Adds the entered information to Reviews table in database
+    db = getDB()
+    db.execute("INSERT INTO Reviews(title, reviewDate, reviewerName, reviewText, rating, reviewImage) VALUES(?, ?, ?, ?, ?, ?)", (title, reviewerName, reviewDate, reviewText, rating, reviewImage))
+    db.commit()
+    
     return True

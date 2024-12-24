@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div>
+    <!-- Will include header image section -->
+    <img src="" alt="">
+    <!--------------------------------------->
+    <h1>Post your review</h1>
+    <h2>Please fill out the form below</h2>
+    <form action="/postreview" method="POST" enctype="multipart/form-data">
+        <label>Title</label>
+        <br>
+        <input type="text" name="title" id="title" placeholder="The review title...">
+        <br>
+        <label>Review Date</label>
+        <br>
+        <input type="date" name="date" id="date">
+        <br>
+        <label>Description</label>
+        <br>
+        <input type="text" name="description" id="description" placeholder="A short overview of your thoughts on the game...">
+        <br>
+        <label>Star Rating</label>
+        <br>
+        <input type="text" name="rating" id="rating" placeholder="1-5...">
+        <br>
+        <label>Image</label>
+        <br>
+        <input type="file" name="image" id="image" placeholder="Supported file formats only..."  accept=".png, .jpg, .jpeg">
+        <br>
+        <input type="submit" value="Post">
+    </form>
+</div>
+
+{% endblock %}
