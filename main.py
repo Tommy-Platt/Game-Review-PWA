@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, session, redirect
 from db import *
+from PIL import Image
+import base64, io
 
 app = Flask(__name__)
 app.secret_key = "revos"
@@ -8,10 +10,13 @@ app.secret_key = "revos"
 @app.route("/")
 def Home():
     reviewData = getAllReviews()
+    
     return render_template("index.html", reviews=reviewData) # Renders homepage and sets the review data to a useable variable
 
 @app.route("/login", methods=["GET", "POST"])
 def Login():
+
+    # Attempts login after form is submitted
     if request.method == "POST":
             username = request.form['username']
             password = request.form['password']
@@ -67,5 +72,14 @@ def Post():
         postReview(reviewTitle, reviewDate, reviewerName, reviewText, rating, reviewImage)
 
     return render_template("postreview.html")
+
+# Converts BLOB images into a base64 to be converted to a proper image
+def convertBLOB(reviewImage):
+    byteArray = bytearray(reviewImage)  # Convert BLOB to Bytearray
+    encodedData = base64.b64encode(bytes(byteArray)).decode('utf-8')  # Encode bytearray to base64
+    
+    return encodedData # Sends the real image back to what called it
+
+app.jinja_env.globals.update(convertBLOB=convertBLOB)
 
 app.run(debug=True, port=5000) # Runs the Flask server

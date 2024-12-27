@@ -121,6 +121,7 @@ a:hover {
 .reviews_table th {
     border: 1px solid #ddd;
     padding: 8px;
+    text-align: center;
 }
 
 .reviews_table tr:nth-child(even) {
@@ -134,7 +135,6 @@ a:hover {
 .reviews_table th {
     padding-top: 12px;
     padding-bottom: 12px;
-    text-align: left;
     background-image: linear-gradient(rgb(205, 255, 237), rgb(148, 242, 255));
     color: rgb(97, 137, 141);
 }
@@ -196,4 +196,12 @@ button:hover {
     margin-left: 75%;
     border-left: 200px;
     filter: drop-shadow(0 0 0.75rem gray);
+}
+
+/* Used for images in the tables of reviews */
+.reviewImage {
+    border-radius: 8px;
+    width: 200px;
+    height: 200px;
+    filter: drop-shadow(0 0 0.3rem black);
 }

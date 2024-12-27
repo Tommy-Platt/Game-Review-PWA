@@ -30,8 +30,8 @@
             <!-- Displays different icons depending on login status -->
                 {% if not session['username'] %}
                     <a href="/allreviews">All Reviews <span class="inline-icon material-icons">reviews</span></a>
-                    <a class="bg" href="/login">Login</a>
-                    <a class="bg" href="/register">Register</a>
+                    <a class="bg" href="/login">Login <span class="inline-icon material-icons">account_circle</span></a>
+                    <a class="bg" href="/register">Register <span class="inline-icon material-icons">person_add</span></a>
                 {% else %}
                     <a href="/postreview">Post Review <span class="inline-icon material-icons">edit</span></a>
                     <a href="/myreviews">My Reviews <span class="inline-icon material-icons">rate_review</span></a>
