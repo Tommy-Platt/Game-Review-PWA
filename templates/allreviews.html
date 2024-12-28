@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>All Reviews</h1>
+
+<!-- Table of reviews on homepage -->
+<table class="reviews_table">
+    <thead>
+        <th>Title</th>
+        <th>Image</th>
+        <th>Rating</th>
+        <th>Username</th>
+        <th>Date</th>
+    </thead>
+
+    <!-- Puts the title, image, rating, reviewer & date from each review into the table -->
+    <tbody>
+        {% for review in reviews %}
+        <tr>
+            <td>{{ review['title'] }}</td>
+            <td>
+                <!-- If the review has an image, display it as a jpeg or png -->
+                {% if review['reviewImage'] is not none %}
+                    <object class="reviewImage" data="data:image/jpeg;base64,{{ convertBLOB(review['reviewImage']) }}" type=image/jpeg>
+                        <object class="reviewImage" data="data:image/png;base64,{{ convertBLOB(review['reviewImage']) }}" type=image/png>
+                        </object>
+                    </object>
+                {% endif %}
+            </td>
+            <td>{{ '★'*review['rating'] + '☆'*(5-review['rating']) }}</td>
+            <td>{{ review['reviewerName'] }}</td>
+            <td>{{ review['reviewDate'] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

@@ -9,7 +9,7 @@ app.secret_key = "revos"
 # Route for homepage
 @app.route("/")
 def Home():
-    reviewData = getAllReviews()
+    reviewData = getRecentReviews()
     
     return render_template("index.html", reviews=reviewData) # Renders homepage and sets the review data to a useable variable
 
@@ -72,6 +72,12 @@ def Post():
         postReview(reviewTitle, reviewDate, reviewerName, reviewText, rating, reviewImage)
 
     return render_template("postreview.html")
+
+@app.route("/allreviews")
+def Reviews():
+    reviewData = getAllReviews()
+    
+    return render_template("allreviews.html", reviews=reviewData) # Renders the page and sets the review data to a useable variable
 
 # Converts BLOB images into a base64 to be converted to a proper image
 def convertBLOB(reviewImage):

@@ -17,6 +17,14 @@ def getAllReviews():
     db.close()
     return reviews
 
+def getRecentReviews():
+
+    # Connect to reviewos.db, SELECT the 5 most recent reviews and return
+    db = getDB()
+    reviews = db.execute("SELECT * FROM Reviews ORDER BY reviewDate DESC LIMIT 5").fetchall()
+    db.close()
+    return reviews
+
 def checkLogin(username, password):
 
     db = getDB()
