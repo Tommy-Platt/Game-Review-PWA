@@ -2,7 +2,11 @@
 
 {% block content %}
 
-<h1>All Reviews</h1>
+<!-- Headings for the page -->
+<div class="container">
+    <h1>Welcome back, {{ session['username'] }}</h1>
+    <p>All your reviews in one place!</p>
+</div>
 
 <!-- Table of reviews on page -->
 <table class="reviews_table">
@@ -14,7 +18,7 @@
         <th>Date</th>
     </thead>
 
-    <!-- Puts the title, image, rating, reviewer & date from each review into the table -->
+    <!-- Puts the title, image, rating, reviewer & date from their reviews into the table -->
     <tbody>
         {% for review in reviews %}
         <tr>

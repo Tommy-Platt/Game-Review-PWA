@@ -25,6 +25,14 @@ def getRecentReviews():
     db.close()
     return reviews
 
+def getMyReviews(user):
+
+    # Passed session username used to return all reviews in the Reviews table by that user
+    db = getDB()
+    reviews = db.execute(f"SELECT * FROM Reviews WHERE reviewerName='{user}' ORDER BY reviewDate DESC").fetchall()
+    db.close()
+    return reviews
+
 def checkLogin(username, password):
 
     db = getDB()
