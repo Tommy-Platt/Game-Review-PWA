@@ -74,6 +74,13 @@ def postReview(title, reviewerName, reviewDate, reviewText, rating, reviewImage)
         if i is None:
             return False
 
+    # Ratings acceped are only 1-5, returns false with other numbers and if another datatype is used
+    try:
+        if int(rating) not in range(1,6):
+            return False
+    except:
+        return False
+
     # Adds the entered information to Reviews table in database
     db = getDB()
     db.execute("INSERT INTO Reviews(title, reviewDate, reviewerName, reviewText, rating, reviewImage) VALUES(?, ?, ?, ?, ?, ?)", (title, reviewerName, reviewDate, reviewText, rating, reviewImage))
