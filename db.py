@@ -11,9 +11,11 @@ def getDB():
 
 def getAllReviews():
 
-    # Connect to reviewos.db, SELECT all reviews and return
+    # Connect to reviewos.db, SELECT all reviews and return, joining the reviewer name with their username
     db = getDB()
-    reviews = db.execute("SELECT * FROM Reviews ORDER BY reviewDate DESC").fetchall()
+    reviews = db.execute("""SELECT Reviews.title, Reviews.reviewImage, Reviews.rating, Reviews.reviewDate, Users.username
+                            FROM Reviews JOIN Users ON Reviews.reviewerName = Users.username
+                            ORDER BY reviewDate DESC""").fetchall()
     db.close()
     return reviews
 
