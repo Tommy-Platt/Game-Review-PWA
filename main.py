@@ -16,6 +16,9 @@ def Home():
 @app.route("/login", methods=["GET", "POST"])
 def Login():
 
+    if session.get('username') != None: # Allows access without account
+        return redirect("/") 
+
     # Attempts login after form is submitted
     if request.method == "POST":
             username = request.form['username']
@@ -41,6 +44,9 @@ def Logout():
 @app.route("/register", methods=["GET", "POST"])
 def Register():
 
+    if session.get('username') != None: # Allows access without account
+        return redirect("/") 
+
     # Registers user if they submit the form
     if request.method == "POST":
         username = request.form['username']
@@ -55,6 +61,9 @@ def Register():
 
 @app.route("/postreview", methods=["GET", "POST"])
 def Post():
+
+    if session.get('username') == None: # Allows access if logged in
+        return redirect("/") 
 
     # Attempts to add review after they fill out the form
     if request.method == "POST":
@@ -71,6 +80,9 @@ def Post():
         # Stores the user's data
         postReview(reviewTitle, reviewDate, reviewerName, reviewText, rating, reviewImage)
 
+        # Return to My Reviews to see their post
+        return redirect("/myreviews")
+
     return render_template("postreview.html")
 
 @app.route("/allreviews")
@@ -81,6 +93,10 @@ def Reviews():
 
 @app.route("/myreviews")
 def myReviews():
+
+    if session.get('username') == None: # Allows access if logged in
+        return redirect("/")
+
     user = session['username']
     reviewData = getMyReviews(user)
     
