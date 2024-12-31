@@ -31,7 +31,7 @@
     <tbody>
         {% for review in reviews %}
         <tr>
-            <td>{{ review['title'] }}</td>
+            <td><a href="/{{ review['id'] }}">{{ review['title'] }}</a></td> <!-- Titles link to their respective reviews -->
             <td>
                 <!-- If the review has an image, display it as a jpeg or png -->
                 {% if review['reviewImage'] is not none %}

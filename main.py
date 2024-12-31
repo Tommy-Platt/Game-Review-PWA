@@ -102,6 +102,16 @@ def myReviews():
     
     return render_template("myreviews.html", reviews=reviewData) # Renders the page and sets the review data to a useable variable
 
+@app.route("/<int:id>")
+def singleReview(id):
+
+    # Gets the data for the review with id matching the page route
+    reviewData = getSingleReview(id)
+    if reviewData is None:
+        redirect("/")
+
+    return render_template("singlereview.html", review=reviewData) # Renders the page and sets the review data to a useable variable
+
 # Converts BLOB images into a base64 to be converted to a proper image
 def convertBLOB(reviewImage):
     byteArray = bytearray(reviewImage)  # Convert BLOB to Bytearray

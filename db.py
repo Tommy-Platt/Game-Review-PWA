@@ -13,9 +13,7 @@ def getAllReviews():
 
     # Connect to reviewos.db, SELECT all reviews and return, joining the reviewer name with their username
     db = getDB()
-    reviews = db.execute("""SELECT Reviews.title, Reviews.reviewImage, Reviews.rating, Reviews.reviewDate, Users.username
-                            FROM Reviews JOIN Users ON Reviews.reviewerName = Users.username
-                            ORDER BY reviewDate DESC""").fetchall()
+    reviews = db.execute("""SELECT * FROM Reviews JOIN Users ON Reviews.reviewerName = Users.username ORDER BY reviewDate DESC""").fetchall()
     db.close()
     return reviews
 
@@ -34,6 +32,15 @@ def getMyReviews(user):
     reviews = db.execute(f"SELECT * FROM Reviews WHERE reviewerName='{user}' ORDER BY reviewDate DESC").fetchall()
     db.close()
     return reviews
+
+def getSingleReview(id):
+    
+    # Retrieves the important information for one review
+    db = getDB()
+    review = db.execute(f"SELECT * FROM Reviews WHERE id={id}").fetchone()
+    db.close()
+
+    return review
 
 def checkLogin(username, password):
 
