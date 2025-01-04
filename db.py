@@ -1,4 +1,5 @@
 import sqlite3
+from flask import flash
 from werkzeug.security import generate_password_hash, check_password_hash
 
 def getDB():
@@ -96,3 +97,12 @@ def postReview(title, reviewerName, reviewDate, reviewText, rating, reviewImage)
     db.commit()
     
     return True
+
+def deleteReview(id):
+    # Retrieves review to be deleted and deletes from the table
+    review = getSingleReview(id)
+    db = getDB()
+    db.execute("DELETE FROM Reviews WHERE id=?", (id,))
+    db.commit()
+    db.close()
+    flash('"{}" was successfully deleted!'.format(review['title']))

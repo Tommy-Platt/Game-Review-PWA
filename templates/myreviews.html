@@ -8,6 +8,13 @@
     <p>All your reviews in one place!</p>
 </div>
 
+<!-- JS function for confirming post deletion -->
+<script>
+    function confirmDelete() {
+        confirm('Are you sure you want to delete this post?');
+  }
+</script>
+
 <!-- Table of reviews on page -->
 <table class="reviews_table">
     <thead>
@@ -16,6 +23,7 @@
         <th>Rating</th>
         <th>Username</th>
         <th>Date</th>
+        <th>Options</th>
     </thead>
 
     <!-- Puts the title, image, rating, reviewer & date from their reviews into the table -->
@@ -35,6 +43,15 @@
             <td>{{ '★'*review['rating'] + '☆'*(5-review['rating']) }}</td>
             <td>{{ review['reviewerName'] }}</td>
             <td>{{ review['reviewDate'] }}</td>
+            <td>
+                <form action="/edit" method="POST">
+                    <button type="submit" name="edit"><i class="inline-icon material-icons">edit</i></button>
+                </form>
+                <!-- Delete button with confirmation box. Calls the delete function with the id of the selected review. -->
+                <form action="{{ url_for('delete', id=review['id']) }}" method="POST">
+                    <button type="submit" name="deletepost" onclick="confirmDelete()"><i class="inline-icon material-icons">delete</i></button>
+                </form>
+            </td>
         </tr>
         {% endfor %}
     </tbody>

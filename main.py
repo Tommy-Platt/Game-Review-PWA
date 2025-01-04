@@ -112,6 +112,11 @@ def singleReview(id):
 
     return render_template("singlereview.html", review=reviewData) # Renders the page and sets the review data to a useable variable
 
+@app.route("/<int:id>/delete", methods=("POST",))
+def delete(id):
+    deleteReview(id)
+    return redirect("/myreviews")
+
 # Converts BLOB images into a base64 to be converted to a proper image
 def convertBLOB(reviewImage):
     byteArray = bytearray(reviewImage)  # Convert BLOB to Bytearray
