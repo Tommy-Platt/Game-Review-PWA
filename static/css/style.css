@@ -188,6 +188,16 @@ button:hover {
     background-image: linear-gradient(rgb(148, 242, 255), rgb(205, 255, 237));
 }
 
+textarea {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
 .imgs {
     float: right;
     position: fixed;

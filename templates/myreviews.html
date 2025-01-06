@@ -26,7 +26,7 @@
         <th>Options</th>
     </thead>
 
-    <!-- Puts the title, image, rating, reviewer & date from their reviews into the table -->
+    <!-- Puts the title, image, rating, reviewer & date from their reviews into the table. Includes editing & deleting options -->
     <tbody>
         {% for review in reviews %}
         <tr>
@@ -44,9 +44,11 @@
             <td>{{ review['reviewerName'] }}</td>
             <td>{{ review['reviewDate'] }}</td>
             <td>
-                <form action="/edit" method="POST">
-                    <button type="submit" name="edit"><i class="inline-icon material-icons">edit</i></button>
+                <!-- Edit Button which redirects to the edit page of the selected review -->
+                <form action="{{ url_for('edit', id=review['id']) }}">
+                    <button><i class="inline-icon material-icons">edit</i></button>
                 </form>
+
                 <!-- Delete button with confirmation box. Calls the delete function with the id of the selected review. -->
                 <form action="{{ url_for('delete', id=review['id']) }}" method="POST">
                     <button type="submit" name="deletepost" onclick="confirmDelete()"><i class="inline-icon material-icons">delete</i></button>

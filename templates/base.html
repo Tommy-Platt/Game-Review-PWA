@@ -6,16 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <!-- This line blocks cross site scripting, allowing for inline scripts i.e. scripts run by the app itself -->
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline'">
-
+    
     <title>ReviewOS</title>
 
     <!-- Material Design Integration + CSS Styling -->
-    <link rel="stylesheet" href="static/css/style.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" /> 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
     <!-- These lines will be used later -->
     <link rel="manifest" href="static/manifest.json" />
-    <link rel="icon" type="image/x-icon" href="static/images/favicon.png">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.png') }}">
 </head>
 
 <body>
@@ -23,7 +23,7 @@
     <!-- Navigation Menu Section -->
     <nav>
         <div>
-            <img class="title" src="static/images/ReviewOS logo.gif" alt="ReviewOS logo">
+            <img class="title" src="{{ url_for('static', filename='images/ReviewOS logo.gif') }}" alt="ReviewOS logo">
             <div class="nav_button">
                 <a href="/">Home <span class="inline-icon material-icons">home</span></a>
                 

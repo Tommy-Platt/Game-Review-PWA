@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- Displays the chosen review title -->
+<h1>Edit "{{ review['title'] }}"</h1>
+
+<!-- A long form containing the previous review information for editing. -->
+<form method="POST" enctype="multipart/form-data">
+    
+    <label>Title</label>
+    <br>
+    <input type="text" name="title" id="title" placeholder="The review title..." value="{{ request.form['title'] or review['title'] }}">
+    <br>
+    <label>Review Date</label>
+    <br>
+    <input type="date" name="date" id="date" value="{{ request.form['date'] or review['reviewDate'] }}">
+    <br>
+    <label>Description</label>
+    <br>
+    <textarea rows="4" type="text" name="description" id="description" placeholder="A short overview of your thoughts on the game...">{{ request.form['description'] or review['reviewText'] }}</textarea>
+    <br>
+    <label>Star Rating</label>
+    <br>
+    <input type="text" name="rating" id="rating" placeholder="1-5..." value="{{ request.form['rating'] or review['rating'] }}">
+    <br>
+    <label>Image</label>
+    <br>
+    <input type="file" name="image" id="image" placeholder="Supported file formats only..."  accept=".png, .jpg, .jpeg">
+    <br>
+    <input type="submit" value="Post">
+</form>
+
+{% endblock %}

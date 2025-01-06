@@ -99,6 +99,7 @@ def postReview(title, reviewerName, reviewDate, reviewText, rating, reviewImage)
     return True
 
 def deleteReview(id):
+
     # Retrieves review to be deleted and deletes from the table
     review = getSingleReview(id)
     db = getDB()
@@ -106,3 +107,11 @@ def deleteReview(id):
     db.commit()
     db.close()
     flash('"{}" was successfully deleted!'.format(review['title']))
+
+def editReview(title, reviewerName, reviewDate, reviewText, rating, reviewImage, id):
+
+    # Opens the database and attempts to insert the edited information into the required fields
+    db = getDB()
+    db.execute("UPDATE Reviews SET title=?, reviewDate=?, reviewerName=?, reviewText=?, rating=?, reviewImage=?"" WHERE id=?", (title, reviewDate, reviewerName, reviewText, rating, reviewImage, id))
+    db.commit()
+    db.close()
