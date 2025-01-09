@@ -70,7 +70,7 @@ def registerUser(username, password):
     hash = generate_password_hash(password)
     # Try to insert the user into the database, if it fails the page refreshes
     try:
-        db.execute("INSERT INTO Users(username, password) VALUES(?, ?)", (username, hash,))
+        db.execute("INSERT INTO Users(username, password) VALUES(?, ?)", (username.lower(), hash,))
         db.commit()
     except:
         return False
