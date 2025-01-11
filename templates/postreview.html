@@ -2,34 +2,48 @@
 
 {% block content %}
 
-<div>
-    <!-- Will include header image section -->
-    <img src="" alt="">
-    <!--------------------------------------->
+<!-- Header image and text -->
+    <div class="headerContainer">
+    <h1 class="postHeaderText"><font color="#FF8C8C">IGN? </font> <font color="#94F2FF">Nah.</font> Real reviews start with you.</h1>
+    <img class="headerImage" src="static/images/gamelist.jpg" alt="Collage of video games">
+    </div>
+
+<!-- Container class centres objects, with the form-row & form-group classes putting items next to each other -->
+<div class="container">
     <h1>Post your review</h1>
     <h2>Please fill out the form below</h2>
+
     <form action="/postreview" method="POST" enctype="multipart/form-data">
-        <label>Title</label>
-        <br>
-        <input type="text" name="title" id="title" placeholder="The review title...">
-        <br>
-        <label>Review Date</label>
-        <br>
-        <input type="date" name="date" id="date">
-        <br>
-        <label>Description</label>
-        <br>
-        <textarea rows="4" type="text" name="description" id="description" placeholder="A short overview of your thoughts on the game..."></textarea>
-        <br>
-        <label>Star Rating</label>
-        <br>
-        <input type="text" name="rating" id="rating" placeholder="1-5...">
-        <br>
-        <label>Image</label>
-        <br>
-        <input type="file" name="image" id="image" placeholder="Supported file formats only..."  accept=".png, .jpg, .jpeg">
-        <br>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>Title</label>
+                <input type="text" name="title" id="title" placeholder="The review title...">
+            </div>
+            <div class="form-group">
+                <label>Review Date</label>
+                <input type="date" name="date" id="date">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Description</label>
+        </div>
+        <textarea rows="5" type="text" name="description" id="description" placeholder="A short overview of your thoughts on the game..."></textarea>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label>Star Rating</label>
+            <input type="text" name="rating" id="rating" placeholder="1-5...">
+            </div>
+            <div class="form-group">
+                <label>Image</label>
+                <input type="file" name="image" id="image" placeholder="Supported file formats only..."  accept=".png, .jpg, .jpeg">
+            </div>
+        </div>
+
         <input type="submit" value="Post">
+
     </form>
 </div>
 

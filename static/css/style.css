@@ -108,8 +108,13 @@ a:hover {
     color: rgb(34, 34, 34);
 }
 
-.container {}
+/* Centres content */
+.container {
+    display: grid;
+    place-content: center;
+}
 
+/* ----------------------------------------------------- */
 /* Following classes are styling of the table of reviews */
 .reviews_table {
     font-family: "Inter", sans-serif;
@@ -139,7 +144,10 @@ a:hover {
     color: rgb(97, 137, 141);
 }
 
-/* Unfinished styling for buttons & inputs */
+/* ----------------------------------------------------- */
+
+/* ----------------------------- */
+/* Styling for buttons & inputs */
 input[type=text],
 input[type="password"],
 input[type="date"],
@@ -154,7 +162,7 @@ select {
 }
 
 input[type=submit] {
-    width: 50%;
+    width: 100%;
     background-image: linear-gradient(rgb(205, 255, 237), rgb(148, 242, 255));
     color: rgb(97, 137, 141);
     padding: 14px 20px;
@@ -189,7 +197,7 @@ button:hover {
 }
 
 textarea {
-    width: 50%;
+    width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
@@ -197,6 +205,8 @@ textarea {
     border-radius: 8px;
     box-sizing: border-box;
 }
+
+/* ----------------------------- */
 
 .imgs {
     float: right;
@@ -215,3 +225,45 @@ textarea {
     height: 200px;
     filter: drop-shadow(0 0 0.3rem black);
 }
+
+/* Used for the Post Review header image */
+.headerImage {
+    filter: blur(4px);
+    z-index: 0;
+    width: 100%;
+    height: 500px;
+}
+
+/* Used for the Post Review header text */
+.postHeaderText {
+    filter: drop-shadow(0 0 0.75rem black);
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+/* Centres header content */
+.headerContainer {
+    position: relative;
+    text-align: center;
+}
+
+/* -------------------------------------- */
+/* Allows form content to go side-by-side */
+.form-row {
+    display: flex;
+}
+
+.form-group {
+    padding-right: 7px;
+    width: 50%;
+}
+
+.form-group input {
+    width: 100%;
+}
+
+/* -------------------------------------- */

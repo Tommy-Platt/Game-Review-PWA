@@ -2,33 +2,43 @@
 
 {% block content %}
 
-<!-- Displays the chosen review title -->
-<h1>Edit "{{ review['title'] }}"</h1>
+<div class="container">
+    <!-- Displays the chosen review title -->
+    <h1>Edit "{{ review['title'] }}"</h1>
 
-<!-- A long form containing the previous review information for editing. -->
-<form method="POST" enctype="multipart/form-data">
-    
-    <label>Title</label>
-    <br>
-    <input type="text" name="title" id="title" placeholder="The review title..." value="{{ request.form['title'] or review['title'] }}">
-    <br>
-    <label>Review Date</label>
-    <br>
-    <input type="date" name="date" id="date" value="{{ request.form['date'] or review['reviewDate'] }}">
-    <br>
-    <label>Description</label>
-    <br>
-    <textarea rows="4" type="text" name="description" id="description" placeholder="A short overview of your thoughts on the game...">{{ request.form['description'] or review['reviewText'] }}</textarea>
-    <br>
-    <label>Star Rating</label>
-    <br>
-    <input type="text" name="rating" id="rating" placeholder="1-5..." value="{{ request.form['rating'] or review['rating'] }}">
-    <br>
-    <label>Image</label>
-    <br>
-    <input type="file" name="image" id="image" placeholder="Supported file formats only..."  accept=".png, .jpg, .jpeg">
-    <br>
-    <input type="submit" value="Post">
-</form>
+    <!-- A long form containing the previous review information for editing. -->
+    <form action="/postreview" method="POST" enctype="multipart/form-data">
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>Title</label>
+                <input type="text" name="title" id="title" placeholder="The review title..." value="{{ request.form['title'] or review['title'] }}">
+            </div>
+            <div class="form-group">
+                <label>Review Date</label>
+                <input type="date" name="date" id="date" value="{{ request.form['date'] or review['reviewDate'] }}">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Description</label>
+        </div>
+        <textarea rows="5" type="text" name="description" id="description" placeholder="A short overview of your thoughts on the game...">{{ request.form['description'] or review['reviewText'] }}</textarea>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label>Star Rating</label>
+            <input type="text" name="rating" id="rating" placeholder="1-5..." value="{{ request.form['rating'] or review['rating'] }}">
+            </div>
+            <div class="form-group">
+                <label>Image</label>
+                <input type="file" name="image" id="image" placeholder="Supported file formats only..."  accept=".png, .jpg, .jpeg">
+            </div>
+        </div>
+
+        <input type="submit" value="Post">
+
+    </form>
+</div>
 
 {% endblock %}
