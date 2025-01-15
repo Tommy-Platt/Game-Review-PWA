@@ -2,19 +2,23 @@
 
 {% block content %}
 
-<img class="imgs" src="static/images/login img.jpg" alt="man playing a game on a PC to review" width="400" height="600px">
-<h1>Login to your account</h1>
-<p>Return to the epic world of game reviewing</p>
-<h2>Enter your details</h2>
-<form action="/login" method="POST">
-    <label>Username</label>
-    <br>
-    <input type="text" name="username" id="username" placeholder="Enter here...">
-    <br>
-    <label>Password</label>
-    <br>
-    <input type="password" name="password" id="password" placeholder="Enter here...">
-    <input type="submit" value="Login">
-</form>
+<div class="container">
+    <h1>Login to your account</h1>
+    <p>Return to the epic world of game reviewing</p>
+    <h2>Enter your details</h2>
+    <form action="/login" method="POST">
+        <div class="form-row">
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" name="username" id="username" placeholder="Enter here...">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" name="password" id="password" placeholder="Enter here...">
+            </div>
+        </div>
+        <input type="submit" value="Login">
+    </form>
+</div>
 
 {% endblock %}

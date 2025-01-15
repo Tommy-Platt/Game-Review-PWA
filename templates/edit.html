@@ -4,10 +4,10 @@
 
 <div class="container">
     <!-- Displays the chosen review title -->
-    <h1>Edit "{{ review['title'] }}"</h1>
-
+    <h1>Edit Your Review</h1>
+    
     <!-- A long form containing the previous review information for editing. -->
-    <form action="/postreview" method="POST" enctype="multipart/form-data">
+    <form method="POST" enctype="multipart/form-data">
 
         <div class="form-row">
             <div class="form-group">
@@ -36,7 +36,7 @@
             </div>
         </div>
 
-        <input type="submit" value="Post">
+        <input type="submit" value="Edit">
 
     </form>
 </div>

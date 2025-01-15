@@ -62,7 +62,8 @@ nav {
     overflow: hidden;
     background-color: gainsboro;
     text-align: center;
-    position: fixed;
+    position: sticky;
+    top: 0;
     z-index: 1030;
     width: 100%;
 }
@@ -119,7 +120,7 @@ a:hover {
 .reviews_table {
     font-family: "Inter", sans-serif;
     border-collapse: collapse;
-    width: 50%;
+    width: 100%;
 }
 
 .reviews_table td,
@@ -245,6 +246,13 @@ textarea {
     z-index: 1;
 }
 
+/* Adjusts the font size of the header text for smaller screens */
+@media screen and (max-width: 776px) {
+    .postHeaderText {
+        font-size: 36px;
+    }
+}
+
 /* Centres header content */
 .headerContainer {
     position: relative;
@@ -258,7 +266,7 @@ textarea {
 }
 
 .form-group {
-    padding-right: 7px;
+    padding: 7px;
     width: 50%;
 }
 

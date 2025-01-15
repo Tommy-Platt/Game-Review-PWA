@@ -2,7 +2,10 @@
 
 {% block content %}
 
+<!-- Allows users to scroll for smaller screens -->
+<div style="overflow-x: scroll;">
     <h1>{{ review['title'] }}</h1>
+</div>
 
     {% if review['reviewImage'] is not none %}
         <object class="reviewImage" data="data:image/jpeg;base64,{{ convertBLOB(review['reviewImage']) }}" type=image/jpeg style="vertical-align: top;">
@@ -11,6 +14,7 @@
         </object>
     {% endif %}
 
+<div style="overflow-x:auto;">
     <table class="reviews_table" style="display: inline-block;">
         <thead>
             <th>Username</th>
@@ -28,5 +32,5 @@
             </tr>
         </tbody>
     </table>
-
+</div>
 {% endblock %}
