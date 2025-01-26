@@ -235,21 +235,49 @@ textarea {
     height: 500px;
 }
 
-/* Used for the Post Review header text */
-.postHeaderText {
+/* Subclass for homepage image */
+.headerImage.homepage {
+    width: 75%;
+    height: 75%;
+}
+
+.headerText {
     filter: drop-shadow(0 0 0.75rem black);
     color: white;
     position: absolute;
-    top: 50%;
+    z-index: 1;
+}
+
+/* Used for the Post Review header text */
+.headerText.post {
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 1;
+}
+
+/* Used for the homepage image text */
+.headerText.homepage {
+    top: 40%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+    text-align: left;
 }
 
 /* Adjusts the font size of the header text for smaller screens */
 @media screen and (max-width: 776px) {
-    .postHeaderText {
-        font-size: 36px;
+    .headerText.post {
+        font-size: 48px;
+    }
+}
+
+/* Hides the image on the bottom of the homepage for smaller screens */
+@media screen and (max-width: 930px) {
+    .headerText.homepage {
+        display: none;
+    }
+
+    .headerImage.homepage {
+        display: none;
     }
 }
 
