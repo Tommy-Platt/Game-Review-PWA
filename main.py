@@ -13,6 +13,7 @@ def Home():
     
     return render_template("index.html", reviews=reviewData) # Renders homepage and sets the review data to a useable variable
 
+# Route for login
 @app.route("/login", methods=["GET", "POST"])
 def Login():
 
@@ -26,6 +27,7 @@ def Login():
 
             # Checks if details are correct
             user = checkLogin(username, password)
+
             if user:
                 # Save username and id to the current session
                 session['id'] = user['id']
@@ -34,13 +36,15 @@ def Login():
                 # Return to homepage
                 return redirect("/")
 
-    return render_template("login.html")
+    return render_template("login.html") # Renders login page
 
+# Route for logout
 @app.route("/logout")
 def Logout():
      session.clear()
      return redirect("/")
 
+# Route for register
 @app.route("/register", methods=["GET", "POST"])
 def Register():
 
@@ -57,8 +61,9 @@ def Register():
             # Returns to login page if successful for them to login
             return redirect("/login")
     
-    return render_template("register.html")
+    return render_template("register.html") # Renders the page
 
+# Route for posting reviews
 @app.route("/postreview", methods=["GET", "POST"])
 def Post():
 
@@ -83,25 +88,30 @@ def Post():
         # Return to My Reviews to see their post
         return redirect("/myreviews")
 
-    return render_template("postreview.html")
+    return render_template("postreview.html") # Renders the page
 
+# Route for page of all reviews
 @app.route("/allreviews")
 def Reviews():
-    reviewData = getAllReviews()
+
+    reviewData = getAllReviews() # Get each review
     
     return render_template("allreviews.html", reviews=reviewData) # Renders the page and sets the review data to a useable variable
 
+# Route for page of user's reviews
 @app.route("/myreviews")
 def myReviews():
 
     if session.get('username') == None: # Allows access if logged in
         return redirect("/")
 
+    # Retrieves the reviews of the logged in user
     user = session['username']
     reviewData = getMyReviews(user)
     
     return render_template("myreviews.html", reviews=reviewData) # Renders the page and sets the review data to a useable variable
 
+# Route for page of an individual review
 @app.route("/<int:id>")
 def singleReview(id):
 
@@ -112,11 +122,15 @@ def singleReview(id):
 
     return render_template("singlereview.html", review=reviewData) # Renders the page and sets the review data to a useable variable
 
+# Route for deleting a review
 @app.route("/<int:id>/delete", methods=("POST",))
 def delete(id):
-    deleteReview(id)
-    return redirect("/myreviews")
 
+    deleteReview(id) # Deletes the selected review (see db.py)
+
+    return redirect("/myreviews") # Renders the page
+
+# Route for editing a review
 @app.route("/<int:id>/edit", methods=["GET", "POST"])
 def edit(id):
 
@@ -131,6 +145,7 @@ def edit(id):
         return redirect("/")
 
     if request.method== "POST":
+
         # Attempts to update review after they fill out the form
         reviewTitle = request.form['title']
         reviewDate = request.form['date']
@@ -142,18 +157,18 @@ def edit(id):
         # Retrieves the BLOB of the uploaded image to be stored
         reviewImage = reviewImage.read()
 
-        # Stores the user's data
+        # Stores the user's data in the previous review
         editReview(reviewTitle, reviewerName, reviewDate, reviewText, rating, reviewImage, id)
 
         # Return to My Reviews to see their post
         return redirect("/myreviews")
     
-    return render_template("edit.html", review=reviewData)
+    return render_template("edit.html", review=reviewData) # Renders the page and sets the review data to a useable variable
 
 # Converts BLOB images into a base64 to be converted to a proper image
 def convertBLOB(reviewImage):
-    byteArray = bytearray(reviewImage)  # Convert BLOB to Bytearray
-    encodedData = base64.b64encode(bytes(byteArray)).decode('utf-8')  # Encode bytearray to base64
+    byteArray = bytearray(reviewImage)  # Converts BLOB to Bytearray
+    encodedData = base64.b64encode(bytes(byteArray)).decode('utf-8')  # Encodes Bytearray to base64
     
     return encodedData # Sends the real image back to what called it
 

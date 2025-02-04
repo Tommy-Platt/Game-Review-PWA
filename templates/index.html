@@ -7,12 +7,15 @@
     <h1>Welcome back, {{ session['username'] }}</h1>
     <p>Check out the most recent reviews for the latest and greatest games. <br><br>Want to post a review?</p>
     <button><a class="bg" href="/postreview">Post Review <span class="inline-icon material-icons">edit</span></a></button>
+
 {% else %}
     <h1>Hello there!</h1>
     <p>Check out the most recent reviews for the latest and greatest games. <br><br>Want to post a review? Login or Register today!</p>
+
 {% endif %}
 
 <br>
+
 <h2>Recent Reviews</h2>
 
 <!-- Allows users to scroll for smaller screens -->
@@ -20,6 +23,7 @@
 
     <!-- Table of reviews on homepage -->
     <table class="reviews_table">
+
         <thead>
             <th>Title</th>
             <th>Image</th>
@@ -30,6 +34,7 @@
 
         <!-- Puts the title, image, rating, reviewer & date from each review into the table -->
         <tbody>
+
             {% for review in reviews %}
             <tr>
                 <td><a href="/{{ review['id'] }}">{{ review['title'] }}</a></td> <!-- Titles link to their respective reviews -->
@@ -46,11 +51,15 @@
                 <td>{{ review['reviewerName'] }}</td>
                 <td>{{ review['reviewDate'] }}</td>
             </tr>
+
             {% endfor %}
+
         </tbody>
     </table>
     <br>
 </div>
+
+<!-- Image and text for decoration purposes -->
 <div class="headerContainer">
     <img class="headerImage homepage" src="static/images/er homepage.png" alt="Image from Elden Ring: Shadow of the Erdtree">
     <h1 class="headerText homepage">Reviews by the community, for the community</h1>

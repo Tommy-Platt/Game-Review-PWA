@@ -3,12 +3,14 @@
 {% block content %}
 
 <div class="container">
+
     <!-- Displays the chosen review title -->
     <h1>Edit Your Review</h1>
     
     <!-- A long form containing the previous review information for editing. -->
     <form method="POST" enctype="multipart/form-data">
 
+        <!-- Puts the title and date boxes side by side -->
         <div class="form-row">
             <div class="form-group">
                 <label>Title</label>
@@ -20,11 +22,13 @@
             </div>
         </div>
 
+        <!-- Contains a textbox for the description -->
         <div class="form-group">
             <label>Description</label>
         </div>
         <textarea rows="5" type="text" name="description" id="description" placeholder="A short overview of your thoughts on the game...">{{ request.form['description'] or review['reviewText'] }}</textarea>
         
+        <!-- Puts the rating and image boxes side by side-->
         <div class="form-row">
             <div class="form-group">
                 <label>Star Rating</label>
@@ -36,6 +40,7 @@
             </div>
         </div>
 
+        <!-- Confirm edit button -->
         <input type="submit" value="Edit">
 
     </form>

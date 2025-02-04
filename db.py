@@ -68,6 +68,7 @@ def registerUser(username, password):
     # Adds the entered information to Users table in database
     db = getDB()
     hash = generate_password_hash(password)
+
     # Try to insert the user into the database, if it fails the page refreshes
     try:
         db.execute("INSERT INTO Users(username, password) VALUES(?, ?)", (username.lower(), hash,))
@@ -106,7 +107,6 @@ def deleteReview(id):
     db.execute("DELETE FROM Reviews WHERE id=?", (id,))
     db.commit()
     db.close()
-    flash('"{}" was successfully deleted!'.format(review['title']))
 
 def editReview(title, reviewerName, reviewDate, reviewText, rating, reviewImage, id):
 

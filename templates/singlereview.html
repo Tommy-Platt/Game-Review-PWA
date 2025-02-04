@@ -12,19 +12,23 @@
             <object class="reviewImage" data="data:image/png;base64,{{ convertBLOB(review['reviewImage']) }}" type=image/png>
             </object>
         </object>
+
     {% endif %}
 
 <!-- Displays the table next to the image if space is avaliable, can be scrolled for smaller screens -->
 <div style="display: inline-block; max-width: 100%; overflow-x: auto;">
+
     <br>
+
     <table class="reviews_table">
+
         <thead>
             <th>Username</th>
             <th>Description</th>
             <th>Date</th>
             <th>Rating</th>
         </thead>
-            
+
         <tbody>
             <tr>
                 <td>{{ review['reviewerName'] }}</td>
@@ -33,6 +37,8 @@
                 <td>{{ '★'*review['rating'] + '☆'*(5-review['rating']) }}</td>
             </tr>
         </tbody>
+
     </table>
 </div>
+
 {% endblock %}

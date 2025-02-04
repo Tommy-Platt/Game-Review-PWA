@@ -10,11 +10,13 @@
 
 <!-- Container class centres objects, with the form-row & form-group classes putting items next to each other -->
 <div class="container">
+
     <h1>Post your review</h1>
     <h2>Please fill out the form below</h2>
 
     <form action="/postreview" method="POST" enctype="multipart/form-data">
 
+        <!-- Puts the title and date boxes side by side -->
         <div class="form-row">
             <div class="form-group">
                 <label>Title</label>
@@ -26,11 +28,13 @@
             </div>
         </div>
 
+        <!-- Contains a textbox for the description -->
         <div class="form-group">
             <label>Description</label>
         </div>
         <textarea rows="5" type="text" name="description" id="description" placeholder="A short overview of your thoughts on the game..."></textarea>
         
+        <!-- Puts the rating and image boxes side by side-->
         <div class="form-row">
             <div class="form-group">
                 <label>Star Rating</label>
@@ -42,6 +46,7 @@
             </div>
         </div>
 
+        <!-- Confirm post button -->
         <input type="submit" value="Post">
 
     </form>

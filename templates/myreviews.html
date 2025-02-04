@@ -20,6 +20,7 @@
 
     <!-- Table of reviews on page -->
     <table class="reviews_table">
+
         <thead>
             <th>Title</th>
             <th>Image</th>
@@ -31,6 +32,7 @@
 
         <!-- Puts the title, image, rating, reviewer & date from their reviews into the table. Includes editing & deleting options -->
         <tbody>
+            
             {% for review in reviews %}
             <tr>
                 <td><a href="/{{ review['id'] }}">{{ review['title'] }}</a></td> <!-- Titles link to their respective reviews -->
@@ -47,6 +49,7 @@
                 <td>{{ review['reviewerName'] }}</td>
                 <td>{{ review['reviewDate'] }}</td>
                 <td>
+
                     <!-- Edit Button which redirects to the edit page of the selected review -->
                     <form action="{{ url_for('edit', id=review['id']) }}">
                         <button><i class="inline-icon material-icons">edit</i></button>
@@ -56,10 +59,14 @@
                     <form action="{{ url_for('delete', id=review['id']) }}" method="POST">
                         <button type="submit" name="deletepost" onclick="confirmDelete()"><i class="inline-icon material-icons">delete</i></button>
                     </form>
+
                 </td>
             </tr>
+
             {% endfor %}
+            
         </tbody>
     </table>
 </div>
+
 {% endblock %}

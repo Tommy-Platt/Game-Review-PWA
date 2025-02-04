@@ -68,6 +68,7 @@ nav {
     width: 100%;
 }
 
+/* ------------------------------------- */
 /* Styling for all links in the nav bar */
 nav a {
     display: inline-block;
@@ -99,7 +100,9 @@ nav a.active {
     color: white;
 }
 
-/* Styling for all other links e.g. in buttons */
+/* ------------------------------------- */
+
+/* Styling for all other links e.g. inside buttons */
 a {
     color: rgb(97, 137, 141);
     text-decoration: none;
@@ -209,6 +212,7 @@ textarea {
 
 /* ----------------------------- */
 
+/* Styling for images (may be unused) */
 .imgs {
     float: right;
     position: fixed;
@@ -241,6 +245,7 @@ textarea {
     height: 75%;
 }
 
+/* Used for text inside header sections/similar areas */
 .headerText {
     filter: drop-shadow(0 0 0.75rem black);
     color: white;
