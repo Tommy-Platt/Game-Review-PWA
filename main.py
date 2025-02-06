@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, session, redirect
+from flask import Flask, render_template, request, session, redirect, current_app, make_response
 from db import *
 from PIL import Image
 import base64, io
@@ -35,6 +35,9 @@ def Login():
 
                 # Return to homepage
                 return redirect("/")
+
+    response = make_response("Login successful")
+    response.headers['Cache-Control'] = 'no-store'
 
     return render_template("login.html") # Renders login page
 
@@ -171,6 +174,10 @@ def convertBLOB(reviewImage):
     encodedData = base64.b64encode(bytes(byteArray)).decode('utf-8')  # Encodes Bytearray to base64
     
     return encodedData # Sends the real image back to what called it
+
+@app.route('/serviceworker.js', methods=['GET'])
+def sw():
+    return current_app.send_static_file('serviceworker.js')
 
 app.jinja_env.globals.update(convertBLOB=convertBLOB)
 
