@@ -2,20 +2,6 @@
 
 {% block content %}
 
-<link
-    rel="preload"
-    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-    as="style"
-    onload="this.onload=null;this.rel='stylesheet'"
-/>
-<noscript>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-        rel="stylesheet"
-        type="text/css"
-    />
-</noscript>
-
 <!-- Base content for the homepage -->
 {% if session['username'] %}
     <h1>Welcome back, {{ session['username'] }}</h1>
@@ -55,8 +41,8 @@
                 <td>
                     <!-- If the review has an image, display it as a jpeg or png -->
                     {% if review['reviewImage'] is not none %}
-                        <object class="reviewImage" data="data:image/jpeg;base64,{{ convertBLOB(review['reviewImage']) }}" type=image/jpeg aria-label="Review Image">Review Image
-                            <object class="reviewImage" data="data:image/png;base64,{{ convertBLOB(review['reviewImage']) }}" type=image/png aria-label="Review Image">Review Image</object>
+                        <object class="reviewImage" data="data:image/jpeg;base64,{{ convertBLOB(review['reviewImage']) }}" type=image/jpeg aria-label="Review Image">
+                            <object class="reviewImage" data="data:image/png;base64,{{ convertBLOB(review['reviewImage']) }}" type=image/png aria-label="Review Image"></object>
                         </object>
                     {% endif %}
                 </td>

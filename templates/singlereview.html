@@ -8,8 +8,8 @@
 </div>
 
     {% if review['reviewImage'] is not none %}
-        <object class="reviewImage" data="data:image/jpeg;base64,{{ convertBLOB(review['reviewImage']) }}" type=image/jpeg style="vertical-align: top;">Review Image
-            <object class="reviewImage" data="data:image/png;base64,{{ convertBLOB(review['reviewImage']) }}" type=image/png aria-label="Review Image">Review Image</object>
+        <object class="reviewImage" data="data:image/jpeg;base64,{{ convertBLOB(review['reviewImage']) }}" type=image/jpeg style="vertical-align: top;">
+            <object class="reviewImage" data="data:image/png;base64,{{ convertBLOB(review['reviewImage']) }}" type=image/png aria-label="Review Image"></object>
         </object>
 
     {% endif %}
