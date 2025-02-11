@@ -184,6 +184,11 @@ input[type=submit]:hover {
     color: rgb(34, 34, 34);
 }
 
+/* Search button styling */
+input[type=submit].searchButton {
+    width: 110px;
+}
+
 button {
     background-image: linear-gradient(rgb(205, 255, 237), rgb(148, 242, 255));
     padding: 14px 20px;

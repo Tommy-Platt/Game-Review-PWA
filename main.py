@@ -94,12 +94,18 @@ def Post():
     return render_template("postreview.html") # Renders the page
 
 # Route for page of all reviews
-@app.route("/allreviews")
+@app.route("/allreviews", methods=["GET", "POST"])
 def Reviews():
 
-    reviewData = getAllReviews() # Get each review
-    
-    return render_template("allreviews.html", reviews=reviewData) # Renders the page and sets the review data to a useable variable
+    # Retrieve searched reviews, else return all reviews
+    if request.method == 'POST':
+        query = request.form.get('query', '')
+        reviewData = searchReviews(query)
+
+    else:
+        reviewData = getAllReviews()
+
+    return render_template('allreviews.html', reviews=reviewData) # Renders the page and sets the review data to a useable variable
 
 # Route for page of user's reviews
 @app.route("/myreviews")

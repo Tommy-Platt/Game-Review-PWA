@@ -7,6 +7,13 @@
 <!-- Allows users to scroll for smaller screens -->
 <div style="overflow-x:auto;">
 
+    <form method="POST" action="/allreviews">
+        <input type="text" name="query" id="query" placeholder="Start typing...">
+        <input type="submit" value="Search" class="searchButton">
+    </form>
+
+    <br>
+
     <!-- Table of reviews on page -->
     <table class="reviews_table">
 

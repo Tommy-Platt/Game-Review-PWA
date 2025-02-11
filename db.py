@@ -115,3 +115,15 @@ def editReview(title, reviewerName, reviewDate, reviewText, rating, reviewImage,
     db.execute("UPDATE Reviews SET title=?, reviewDate=?, reviewerName=?, reviewText=?, rating=?, reviewImage=?"" WHERE id=?", (title, reviewDate, reviewerName, reviewText, rating, reviewImage, id))
     db.commit()
     db.close()
+
+# Search Reviews table based on date, title or username, fetch those reviews and return
+def searchReviews(query):
+    
+    db = getDB()
+    reviews = db.execute("""SELECT Reviews.reviewDate, Reviews.title, Reviews.rating, Users.username, Reviews.reviewImage
+                            FROM Reviews JOIN Users ON Reviews.reviewerName = Users.username
+                            WHERE Users.username LIKE ? OR Reviews.title LIKE ?
+                            ORDER BY Reviews.reviewDate DESC""", ('%' + query + '%', '%' + query + '%')).fetchall()
+    db.close()
+    
+    return reviews
