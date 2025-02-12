@@ -67,6 +67,10 @@ def Register():
         if registerUser(username, password):
             # Returns to login page if successful for them to login
             return redirect("/login")
+        
+        # Error if incorrect information is submitted
+        else:
+            return render_template("register.html", error="Username already taken!") # Renders register page with error message
     
     return render_template("register.html") # Renders the page
 

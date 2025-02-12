@@ -10,7 +10,7 @@
 
     <!-- Error message if login fails -->
     {% if error %}
-        <label><font color="#8B0000">Incorrect username or password!</font></label>
+        <label><font color="#8B0000">{{ error }}</font></label>
     {% endif %}
 
     <!-- Login form with username and password boxes side by side -->
