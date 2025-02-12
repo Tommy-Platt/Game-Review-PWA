@@ -8,6 +8,11 @@
     <p>Return to the epic world of game reviewing</p>
     <h2>Enter your details</h2>
 
+    <!-- Error message if login fails -->
+    {% if error %}
+        <label><font color="#8B0000">Incorrect username or password!</font></label>
+    {% endif %}
+
     <!-- Login form with username and password boxes side by side -->
     <form action="/login" method="POST">
 

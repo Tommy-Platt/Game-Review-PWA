@@ -17,7 +17,7 @@ def Home():
 @app.route("/login", methods=["GET", "POST"])
 def Login():
 
-    if session.get('username') != None: # Allows access without account
+    if session.get('id') != None: # Allows access without account
         return redirect("/") 
 
     # Attempts login after form is submitted
@@ -35,6 +35,10 @@ def Login():
 
                 # Return to homepage
                 return redirect("/")
+            
+            # Error if incorrect information is submitted
+            else:
+                return render_template("login.html", error="Incorrect username or password") # Renders login page with error message
 
     response = make_response("Login successful")
     response.headers['Cache-Control'] = 'no-store'
@@ -51,7 +55,7 @@ def Logout():
 @app.route("/register", methods=["GET", "POST"])
 def Register():
 
-    if session.get('username') != None: # Allows access without account
+    if session.get('id') != None: # Allows access without account
         return redirect("/") 
 
     # Registers user if they submit the form
@@ -70,7 +74,7 @@ def Register():
 @app.route("/postreview", methods=["GET", "POST"])
 def Post():
 
-    if session.get('username') == None: # Allows access if logged in
+    if session.get('id') == None: # Allows access if logged in
         return redirect("/") 
 
     # Attempts to add review after they fill out the form
@@ -111,7 +115,7 @@ def Reviews():
 @app.route("/myreviews")
 def myReviews():
 
-    if session.get('username') == None: # Allows access if logged in
+    if session.get('id') == None: # Allows access if logged in
         return redirect("/")
 
     # Retrieves the reviews of the logged in user
