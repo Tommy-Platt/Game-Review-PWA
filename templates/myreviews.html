@@ -47,7 +47,7 @@
                         <button><i class="inline-icon material-icons">edit</i></button>
                     </form>
 
-                    <!-- Delete button with confirmation box. Calls the delete function with the id of the selected review. -->
+                    <!-- Delete button. Calls the delete function with the id of the selected review. -->
                     <form action="{{ url_for('delete', id=review['id']) }}" method="POST">
                         <button type="submit" name="deletepost"><i class="inline-icon material-icons">delete</i></button>
                     </form>
